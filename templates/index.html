@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #eef1f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333333;
+            margin-bottom: 2px;
+            display: block;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .result h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .result p {
+            font-size: 18px;
+            color: #555;
+            margin: 0;
+        }
+    </style>
+</head>
+    
+<body>
+    <h1>Prediction</h1>
+
+    <form method="POST" action="/predict">
+        <label>Gender:</label>
+        <select name="gender" required>
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+        </select><br>
+
+        <label>Parental Level of Education:</label>
+        <select name="parent_education" required>
+            <option value="0">Associate's Degree</option>
+            <option value="1">Bachelor's Degree</option>
+            <option value="2">High School Diploma</option>
+            <option value="3">Master's Degree</option>
+            <option value="4">Some College</option>
+            <option value="5">Some High School</option>
+        </select><br>
+
+        <label>Lunch Payment Category:</label>
+        <select name="lunch" required>
+            <option value="0">Free/Reduced</option>
+            <option value="1">Standard</option>
+        </select><br>
+
+        <label>Test Preparation Course:</label>
+        <select name="test_prep_course" required>
+            <option value="0">Completed</option>
+            <option value="1">None</option>
+        </select><br>
+
+        <label>Math Score (1-100):</label>
+        <input type="number" name="math_score" min="1" max="100" required><br>
+
+        <label>Reading Score (1-100):</label>
+        <input type="number" name="reading_score" min="1" max="100" required><br>
+
+        <label>Writing Score (1-100):</label>
+        <input type="number" name="writing_score" min="1" max="100" required><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    
+    {% if predict is not none %}
+    <div class="result show">
+        <h2>Result:</h2>
+        <p>Prediction: {{ predict }}</p>
+    </div>
+    {% endif %}
+    
+</body>
+</html>
