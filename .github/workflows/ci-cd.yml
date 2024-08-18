@@ -49,5 +49,5 @@ jobs:
       uses: akhileshns/heroku-deploy@v3.12.12
       with:
         heroku_api_key: ${{ secrets.HRKU-b3959a81-febd-45a3-80b1-51b2d2aab4b6 }}
-        heroku_app_name: "fisherj-midterm"
+        heroku_app_name: "fisherj-ana680-midterm"
         heroku_email: "jfisher2@nu.edu"
